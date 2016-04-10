@@ -1,0 +1,20 @@
+Table Name, Column Name, Column Type, Key, Indexed, Refer
+Faculty,Name,String,false,false
+Faculty,ID,Integer,true,true,
+Major,Faculty_ID,Integer,false,false,Facult
+Major,Name,String,false,false,
+Major,ID,Integer,true,true,n
+Course,Name,String,false,false,n
+Course,ID,Integer,true,true,nu
+Course,Code,String,false,false,n
+Course,Hours,Integer,false,false,n
+Course,Major_ID,Integer,false,false,Major
+Course,Semester,Integer,false,false,n
+Student,ID,Integer,true,true,nul
+Student,GPA,Double,false,false,nu
+Student,First_Name,String,false,false,nu
+Student,Age,Integer,false,false,nu
+Student,Last_Name,String,false,false,nu
+Student_in_Course,ID,Integer,true,true,null
+Student_in_Course,Student_ID,Integer,false,false,Student.I
+Student_in_Course,Course_ID,Integer,false,false,Course.I

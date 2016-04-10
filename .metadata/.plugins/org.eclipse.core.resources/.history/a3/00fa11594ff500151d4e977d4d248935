@@ -1,0 +1,13 @@
+ class a {
+	public a (){
+		System.out.println("a is running");
+	}
+}
+public class testClass {
+	public testClass (){
+		System.out.println("testClass is running");
+	}
+	public static void main(String[] args) {
+		testClass c = new testClass();
+	}
+}

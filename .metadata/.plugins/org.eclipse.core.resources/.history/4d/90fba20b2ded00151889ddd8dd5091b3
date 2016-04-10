@@ -1,0 +1,28 @@
+package BTree;
+
+public class NodeData {
+  private int key ;
+  private int tupleNumber;
+  
+  public NodeData (int value , int tupleNumber){
+	  this.key = value;
+	  this.tupleNumber = tupleNumber;
+  }
+
+public int getValue() {
+	return key;
+}
+
+public void setValue(int value) {
+	this.key = value;
+}
+
+public int getTupleNumber() {
+	return tupleNumber;
+}
+
+public void setTupleNumber(int tupleNumber) {
+	this.tupleNumber = tupleNumber;
+}
+  
+}

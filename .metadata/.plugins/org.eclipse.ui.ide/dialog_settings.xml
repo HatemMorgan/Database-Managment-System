@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="true" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="/media/hatem/New Volume/Networks Project/FinalMillstone4.zip"/>
+			<item value="/media/hatem/New Volume/YuGiOh Game/Team 51/MyGame.zip"/>
+			<item value="/media/hatem/New Volume/YuGiOh Game/YUGIOH Game.zip"/>
+			<item value="/home/hatem/Downloads/BPlusTree.zip"/>
+			<item value="/home/hatem/Downloads/Hatem-ElSayed-31-4562-Omar-Hassan-31-5039.zip"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,144 @@
+package Database2Project;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
+import java.net.URL;
+
+public class Page implements Serializable {
+    String tableName ;
+    ArrayList<Hashtable<String, Object>> Rows;
+     int numberOfAvailableRows ;
+    
+	public Page (String TableName  ){
+		this.tableName = TableName;
+		Rows = new ArrayList<Hashtable<String ,Object>>();
+		numberOfAvailableRows =0;
+	  
+	}
+	/*
+	public String toString(){
+		String result = "" ; 
+
+	     
+	       
+		for(int i=1; i<Rows.size() ; i++){
+			String [] Row = null;
+			String strRow ="";
+			
+				Set<String> rowkeys = Rows.get(i).keySet();
+				Iterator<String> Rowiterator = rowkeys.iterator();
+			
+			
+			
+			
+		while (Rowiterator.hasNext() ){
+			String columnName = Rowiterator.next();
+			String ColumnValue = Rows.get(i).get(columnName).toString();
+			
+				strRow = columnName+" = "+ColumnValue+" , "+strRow;
+			}
+			// to remove the space and comma from the end of each row 
+			strRow = strRow.substring(0, strRow.length()-2);
+		 
+			result += "[ "+strRow +" ]"+"\n";
+			}
+		
+	
+		return result;
+	}
+	*/
+	public ArrayList<Hashtable<String, Object>> getRowsArrayList (){
+		return Rows;
+	}
+	
+	
+	public ArrayList<String> getRows(){
+		ArrayList<String> result = new ArrayList<String>();
+
+	     
+	       
+		for(int i=0; i<Rows.size() ; i++){
+			String [] Row = null;
+			String strRow ="";
+			
+				Set<String> rowkeys = Rows.get(i).keySet();
+				Iterator<String> Rowiterator = rowkeys.iterator();
+			
+			
+			
+			
+		while (Rowiterator.hasNext() ){
+			
+			
+			String columnName = Rowiterator.next();
+			
+			//  to donot print exsist column to the user because it must be private to Database management system
+			
+			
+			if(columnName.equals("Exists")){
+				continue;
+			}
+			
+			String ColumnValue = Rows.get(i).get(columnName).toString();
+			
+				strRow = columnName+" = "+ColumnValue+" , "+strRow;
+			}
+			// to remove the space and comma from the end of each row 
+			strRow = "[ "+strRow.substring(0, strRow.length()-2)+" ]";
+		    result.add(strRow);
+			
+			}
+		
+	
+		return  result;
+	}
+	
+public ArrayList<String> getTargetRow (int rowNumber){
+	ArrayList<String> result = new ArrayList<String>();
+	
+		Set<String> rowkeys = Rows.get(rowNumber).keySet();
+		Iterator<String> Rowiterator = rowkeys.iterator();
+
+		String strRow = "";
+	
+	
+while (Rowiterator.hasNext() ){
+	
+	
+	String columnName = Rowiterator.next();
+	
+	//  to donot print exsist column to the user because it must be private to Database management system
+	
+	
+	
+	if(columnName.equals("Exists")){
+		continue;
+	}
+	
+	String ColumnValue = Rows.get(rowNumber).get(columnName).toString();
+	
+		strRow = columnName+" = "+ColumnValue+" , "+strRow;
+	}
+	// to remove the space and comma from the end of each row 
+
+	strRow = "[ "+strRow.substring(0, strRow.length()-2)+" ]";
+    result.add(strRow);
+    return result;
+	}
+	
+public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+
+}
+	
+}

@@ -1,0 +1,115 @@
+package BTree;
+import java.io.IOException;
+
+public class BTreeTest {
+	public static void main(String args[]) throws IOException{
+		IntegerBTree tree = new IntegerBTree();
+		
+		// test for the btree on assignment4
+		tree.insert(1);
+		tree.insert(78);
+		tree.insert(37);
+		tree.insert(150);
+		tree.insert(35);
+		tree.insert(145);
+		tree.insert(19);
+		tree.insert(24);
+		
+		tree.insert(10);
+		tree.insert(210);
+		tree.insert(17);
+		tree.insert(20);
+		tree.insert(30);
+		tree.insert(201);
+		
+		tree.insert(140);
+		tree.insert(207);
+		tree.insert(120);
+		tree.insert(5);
+		
+		       
+		 tree.Display();
+		return;
+	}
+}
+
+
+class IntegerBTree extends BTree<Integer, Integer> {
+	public IntegerBTree() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void insert(int key /*, int tupleNumber*/) {
+		this.insert(key, key,1);
+	
+	}
+	
+	public void remove(int key) {
+		this.delete(key);
+
+	}
+	public void Display (){
+		BTreeNode root = this.getRoot();
+	   printKeys(root);
+	    System.out.println('\n');
+	    
+	    PrintChild(root,root,0);
+		
+	}
+	
+	public void PrintChild(BTreeNode node,BTreeNode child , int index){
+	
+      if(!(node.getNodeType().equals(TreeNodeType.InnerNode))){
+    	  return;
+      }else{
+
+    	  printLevel(child);
+    	  BTreeInnerNode n = (BTreeInnerNode) node;
+    	
+             if(n.children[index] !=null){
+            	
+	    	 PrintChild(node,(BTreeNode)n.children[index],index+=1);
+	    
+	    	// PrintChild((BTreeNode)n.children[index],(BTreeNode)n.children[index],0);
+	       }else{
+	    	   //System.out.println("\n");
+	    	   return;
+	       }
+             
+    	
+    	
+      }
+	}
+	
+	public void printLevel (BTreeNode node){
+		if(node.getNodeType().equals(TreeNodeType.InnerNode)){
+			BTreeInnerNode TargetNode = (BTreeInnerNode) node;
+		
+		       for ( int i=0 ; i<TargetNode.children.length;i++){
+		    	 if((BTreeNode)TargetNode.children[i] == null){
+		    		 break;
+		    	 }
+		    	   
+		    	  printKeys((BTreeNode)TargetNode.children[i]);
+		    	  System.out.print("  --  ");
+		       }
+		      
+		}else{
+			BTreeLeafNode TargetNode = (BTreeLeafNode) node;
+			printKeys(TargetNode);
+		}
+		System.out.println("\n");
+		
+	}
+	
+	public void printKeys (BTreeNode node){
+		for(int i = 0 ; i< node.getKeyCount(); i++){
+		 System.out.print(node.getKey(i)+",");	
+		}
+	//System.out.println("\n");
+		
+	}
+	
+	
+}
